@@ -2,11 +2,10 @@ class alarm_clock:
     def __init__(self):
         self.current_time = '0000'
         self.alarm_on = False
-        self.alarm_off = True
         self.alarm_time = '0000'
 
     def set_time(self):
-        self.current_time = input(f'Current time is {self.current_time}. Please set your desired time.')
+        self.current_time = input(f'Current time is {self.current_time}. Please set your desired time.').lower().strip()
         if self.current_time != '0000':
             print(f'{self.current_time} is the set time.')
         
@@ -18,9 +17,7 @@ class alarm_clock:
     def alarm_check(self):
         if self.alarm_time != '0000':
             self.alarm_on = True
-            self.alarm_off = False
         else:
-            self.alarm_off = True
             self.alarm_on = False
 
     def toggle_alarm(self):
@@ -29,12 +26,10 @@ class alarm_clock:
             if user_input == 'no':
                 print(f'The alarm will stay on and set to {self.alarm_time}')
                 self.alarm_on = True
-                self.alarm_off = False
                 break
             elif user_input == 'yes':
                 print('The alarm is toggled off.')
                 self.alarm_on = False
-                self.alarm_off = True
                 return False
             else:
                 print('Unrecognized input.')
